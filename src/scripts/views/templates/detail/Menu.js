@@ -21,7 +21,10 @@ export default class MenuRestaurant extends LitElement {
           this.menus.foods,
           (food) => html`
             <div class="menu-item" tabindex="0" aria-label=${food.name}>
-              <img class="lazyload" src="./images/dummy-image.jpg" alt="" />
+              <img
+                class="lazyload"
+                data-src="./images/dummy-image.jpg"
+                alt="" />
               <h4>${food.name}</h4>
             </div>
           `,
@@ -33,7 +36,10 @@ export default class MenuRestaurant extends LitElement {
           this.menus.drinks,
           (drink) => html`
             <div class="menu-item" tabindex="0" aria-label=${drink.name}>
-              <img class="lazyload" src="./images/dummy-image.jpg" alt="" />
+              <img
+                class="lazyload"
+                data-src="./images/dummy-image.jpg"
+                alt="" />
               <h3>${drink.name}</h3>
             </div>
           `,

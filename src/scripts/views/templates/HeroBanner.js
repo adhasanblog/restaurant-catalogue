@@ -27,7 +27,7 @@ export default class HeroBanner extends LitElement {
         <picture>
           <source media="(max-width: 600px)" srcset=${this.image.small} />
           <source media="(max-width: 1000px)" srcset=${this.image.medium} />
-          <img class="lazyload" src=${this.image.large} alt="" />
+          <img class="lazyload" data-src=${this.image.large} alt="" />
         </picture>
         ${this.withTitle
           ? html`<div class="title" tabindex="0">

@@ -27,7 +27,10 @@ export default class errorTemplate extends LitElement {
         <picture>
           <source media="(max-width: 600px)" srcset=${this.image.small} />
           <source media="(max-width: 1000px)" srcset=${this.image.medium} />
-          <img class="lazyload" src=${this.image.large} alt=${this.imagealt} />
+          <img
+            class="lazyload"
+            data-src=${this.image.large}
+            alt=${this.imagealt} />
         </picture>
         <p class="errorMessage">${this.errorMessage}</p>
       </div>
