@@ -7,11 +7,17 @@ Before(({ I }) => {
 });
 
 Scenario('Showing empty favorite restaurant', ({ I }) => {
-  I.see('Data not Found', '.errorMessage');
+  I.see(
+    'No favorite restaurants found. Please add some to your favorites.',
+    '.errorMessage',
+  );
 });
 
 Scenario('Liking one restaurant', async ({ I }) => {
-  I.see('Data not Found', '.errorMessage');
+  I.see(
+    'No favorite restaurants found. Please add some to your favorites.',
+    '.errorMessage',
+  );
 
   I.amOnPage('/');
 

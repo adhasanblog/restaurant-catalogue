@@ -17,6 +17,7 @@ export default class errorTemplate extends LitElement {
     super();
     this.image = null;
     this.imageAlt = null;
+    this.errorTitle = null;
     this.errorMessage = null;
   }
 

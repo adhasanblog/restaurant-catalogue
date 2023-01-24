@@ -46,8 +46,14 @@ export default class SearchBar extends LitElement {
                 </restaurants-list>
               `
             : html` <error-template
-                .imageSrc=${'./images/data-not-found.png'}
-                .imageAlt=${'data not found'}></error-template>`}
+                .image=${{
+                  small: './images/data-not-found-small.png',
+                  medium: './images/data-not-found-medium.png',
+                  large: './images/data-not-found-large.png',
+                }}
+                .imageAlt=${'data not found'}
+                .errorMessage=${'No restaurants found in the search.'}>
+              </error-template>`}
         </div>
       </div>
     `;
