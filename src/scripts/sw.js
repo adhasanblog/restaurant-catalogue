@@ -5,10 +5,17 @@ import { ExpirationPlugin } from 'workbox-expiration';
 import { registerRoute } from 'workbox-routing';
 import { StaleWhileRevalidate } from 'workbox-strategies';
 
+const manifest = self.__WB_MANIFEST;
+
+manifest.push({
+  url: 'manifest.json',
+  revision: new Date().toISOString(),
+});
+
 clientsClaim();
 skipWaiting();
 
-precacheAndRoute(self.__WB_MANIFEST, {
+precacheAndRoute(manifest, {
   handleFetch: 'staleWhileRevalidate',
   cleanupOutdatedCaches: true,
   plugins: [
