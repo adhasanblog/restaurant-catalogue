@@ -25,7 +25,7 @@ export default class RestaurantItem extends LitElement {
     return html`
       <img
         class="lazyload restaurant-item__image"
-        src="${CONFIG.BASE_IMG_URL.small + this.restaurant.pictureId}"
+        data-src="${CONFIG.BASE_IMG_URL.small + this.restaurant.pictureId}"
         alt="${this.restaurant.name}" />
       <div class="restaurant-item__city">
         <p>${this.restaurant.city}</p>
