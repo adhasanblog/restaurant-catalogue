@@ -21,19 +21,22 @@ export default class FormReview extends LitElement {
   getInputName(event) {
     const input = event.target;
     this.customerReview.name = input.value;
-    console.log(this.customerReview.name);
   }
 
   getInputDescription(event) {
     const input = event.target;
     this.customerReview.review = input.value;
-    console.log(this.customerReview.review);
   }
 
   render() {
     return html`
       <h3 tabindex="0">Share Your Experience</h3>
-      <form id="formReview" @submit=${this.sendReviewHandler}>
+      <form
+        id="formReview"
+        @submit=${(event) => {
+          event.preventDefault();
+          this.sendReviewHandler();
+        }}>
         <label id="customerName" for="name">Customer Name</label>
         <input
           id="name"
@@ -57,24 +60,27 @@ export default class FormReview extends LitElement {
     `;
   }
 
-  async sendReviewHandler(event) {
-    event.preventDefault();
+  async sendReviewHandler() {
+    if (!navigator.onLine) {
+      SweetalertHelper.init({
+        icon: 'error',
+        message:
+          'Unable to add review. Please check your internet connection and try again.',
+      });
+      this.querySelector('#formReview').reset();
+      this.customerReview.name = '';
+      this.customerReview.review = '';
+    }
+
     const customerReview = {
       id: this.restaurantId,
       name: this.customerReview.name,
       review: this.customerReview.review,
     };
+
     const sendCustomerReview = await RestaurantDataSource.restoReview(
       customerReview,
     );
-
-    if (!navigator.onLine) {
-      SweetalertHelper.init({
-        icon: 'error',
-        message:
-          'We apologize, Unable to add review. Please check your internet connection and try again.',
-      });
-    }
 
     if (!sendCustomerReview.error) {
       document.dispatchEvent(new Event('review-submitted'));
