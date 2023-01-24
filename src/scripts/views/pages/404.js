@@ -1,13 +1,26 @@
 const NotFound404 = {
   async render() {
     return `
-        <p>404 Not Found</p>
+        <div class="container">
+        </div>
        
     `;
   },
 
   async afterRender() {
-    console.log('Hay dari 404');
+    const container = document.querySelector('.container');
+    const errorElement = document.createElement('error-template');
+
+    errorElement.image = {
+      small: './images/404-not-found-small.png',
+      medium: './images/404-not-found-medium.png',
+      large: './images/404-not-found-large.png',
+    };
+    errorElement.imageAlt = '404 not found';
+    errorElement.errorMessage =
+      'Error 404: The requested page could not be found.';
+
+    container.appendChild(errorElement);
   },
 };
 

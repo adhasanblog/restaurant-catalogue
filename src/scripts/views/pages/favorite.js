@@ -25,7 +25,8 @@ const Favorite = {
       large: './images/data-not-found-large.png',
     };
     errorTemplate.imageAlt = 'data not found';
-    errorTemplate.errorMessage = 'Data not Found';
+    errorTemplate.errorMessage =
+      'No favorite restaurants found. Please add some to your favorites.';
 
     if (restaurants.length === 0) {
       restaurantsContainer.appendChild(errorTemplate);

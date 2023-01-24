@@ -1,6 +1,6 @@
 import { LitElement, html } from 'lit';
-import Swal from 'sweetalert2';
 import RestaurantDataSource from '../../../data/restaurant-datasource';
+import SweetalertHelper from '../../../utils/sweetalert-helper';
 
 export default class FormReview extends LitElement {
   static properties = {
@@ -21,11 +21,13 @@ export default class FormReview extends LitElement {
   getInputName(event) {
     const input = event.target;
     this.customerReview.name = input.value;
+    console.log(this.customerReview.name);
   }
 
   getInputDescription(event) {
     const input = event.target;
     this.customerReview.review = input.value;
+    console.log(this.customerReview.review);
   }
 
   render() {
@@ -66,42 +68,31 @@ export default class FormReview extends LitElement {
       customerReview,
     );
 
-    this.querySelector('#formReview').reset();
-    if (!sendCustomerReview.error) {
-      document.dispatchEvent(new Event('review-submitted'));
-
-      let timerInterval;
-      Swal.fire({
-        html: 'Your review has been successfully submitted! Thank you for sharing your feedback with us.',
-        icon: 'success',
-        timer: 1000,
-        timerProgressBar: true,
-        willClose: () => {
-          clearInterval(timerInterval);
-        },
-      }).then((result) => {
-        /* Read more about handling dismissals below */
-        if (result.dismiss === Swal.DismissReason.timer) {
-          console.log('I was closed by the timer');
-        }
-      });
-    } else {
-      let timerInterval;
-      Swal.fire({
-        html: `We apologize, but there was an issue submitting your review (${sendCustomerReview.message}).`,
+    if (!navigator.onLine) {
+      SweetalertHelper.init({
         icon: 'error',
-        timer: 1500,
-        timerProgressBar: true,
-        willClose: () => {
-          clearInterval(timerInterval);
-        },
-      }).then((result) => {
-        /* Read more about handling dismissals below */
-        if (result.dismiss === Swal.DismissReason.timer) {
-          console.log('I was closed by the timer');
-        }
+        message:
+          'We apologize, Unable to add review. Please check your internet connection and try again.',
       });
     }
+
+    if (!sendCustomerReview.error) {
+      document.dispatchEvent(new Event('review-submitted'));
+      SweetalertHelper.init({
+        icon: 'success',
+        message:
+          'Your review has been successfully submitted! Thank you for sharing your feedback with us.',
+      });
+    } else {
+      SweetalertHelper.init({
+        icon: 'error',
+        message: `We apologize, but there was an issue submitting your review (${sendCustomerReview.message}).`,
+      });
+    }
+
+    this.querySelector('#formReview').reset();
+    this.customerReview.name = '';
+    this.customerReview.review = '';
   }
 
   createRenderRoot() {
