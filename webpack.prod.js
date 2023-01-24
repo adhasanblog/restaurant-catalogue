@@ -78,6 +78,12 @@ module.exports = merge(common, {
 
     new CompressionPlugin(),
 
-    new BundleAnalyzerPlugin(),
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'disabled',
+      generateStatsFile: true,
+      statsOptions: {
+        source: false,
+      },
+    }),
   ],
 });
