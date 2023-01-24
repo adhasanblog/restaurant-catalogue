@@ -1,7 +1,7 @@
 import { async } from 'regenerator-runtime';
 
 const itActsAsFavoriteRestaurantModel = (favoriteRestaurant) => {
-  it('Should return the movie that has beed edded', async () => {
+  it('Should return the restaurant that has beed edded', async () => {
     favoriteRestaurant.putRestaurant({ id: 1 });
     favoriteRestaurant.putRestaurant({ id: 2 });
 
@@ -39,7 +39,7 @@ const itActsAsFavoriteRestaurantModel = (favoriteRestaurant) => {
     ]);
   });
 
-  it('should handle request to remove a restaurant even though the movie has not been added', async () => {
+  it('should handle request to remove a restaurant even though the restaurant has not been added', async () => {
     favoriteRestaurant.putRestaurant({ id: 1 });
     favoriteRestaurant.putRestaurant({ id: 2 });
     favoriteRestaurant.putRestaurant({ id: 3 });
