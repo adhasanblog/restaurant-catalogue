@@ -13,7 +13,7 @@ describe('Liking a Restaurant', () => {
     await FavoriteRestaurantIdb.deleteRestaurant(1);
   });
   it('Should show the like button when the restaurant has not been liked before', async () => {
-    await TestFactories.createButtonFavoritePresenterWithMovie({ id: 1 });
+    await TestFactories.createButtonFavoritePresenterWithRestaurant({ id: 1 });
 
     expect(
       document.querySelector('[aria-label="add to favorites"]'),
@@ -21,7 +21,7 @@ describe('Liking a Restaurant', () => {
   });
 
   it('Should not show the unlike button when the restaurant has not been liked before', async () => {
-    await TestFactories.createButtonFavoritePresenterWithMovie({ id: 1 });
+    await TestFactories.createButtonFavoritePresenterWithRestaurant({ id: 1 });
 
     expect(
       document.querySelector('[aria-label="remove from favorites"]'),
@@ -29,7 +29,7 @@ describe('Liking a Restaurant', () => {
   });
 
   it('Should be able to like the restaurant', async () => {
-    await TestFactories.createButtonFavoritePresenterWithMovie({ id: 1 });
+    await TestFactories.createButtonFavoritePresenterWithRestaurant({ id: 1 });
 
     document
       .querySelector('[aria-label="add to favorites"]')
@@ -40,7 +40,7 @@ describe('Liking a Restaurant', () => {
   });
 
   it('should not add a restaurant again when its already liked', async () => {
-    await TestFactories.createButtonFavoritePresenterWithMovie({ id: 1 });
+    await TestFactories.createButtonFavoritePresenterWithRestaurant({ id: 1 });
 
     await FavoriteRestaurantIdb.putRestaurant({ id: 1 });
 
@@ -52,7 +52,7 @@ describe('Liking a Restaurant', () => {
   });
 
   it('Should not add a restaurant when it has no id', async () => {
-    await TestFactories.createButtonFavoritePresenterWithMovie({});
+    await TestFactories.createButtonFavoritePresenterWithRestaurant({});
     document
       .querySelector('[aria-label="add to favorites"]')
       .dispatchEvent(new Event('click'));

@@ -15,7 +15,7 @@ describe('Unliking A Restaurant', () => {
   });
 
   it('Should display unlike widget when the restaurant has been liked', async () => {
-    await TestFactories.createButtonFavoritePresenterWithMovie({ id: 1 });
+    await TestFactories.createButtonFavoritePresenterWithRestaurant({ id: 1 });
 
     expect(
       document.querySelector('[aria-label="remove from favorites"]'),
@@ -23,7 +23,7 @@ describe('Unliking A Restaurant', () => {
   });
 
   it('Should not display like widget when the restaurant has been liked', async () => {
-    await TestFactories.createButtonFavoritePresenterWithMovie({ id: 1 });
+    await TestFactories.createButtonFavoritePresenterWithRestaurant({ id: 1 });
 
     expect(
       document.querySelector('[aria-label="add to favorites"]'),
@@ -31,7 +31,7 @@ describe('Unliking A Restaurant', () => {
   });
 
   it('Should be able to remove liked restaurant from the list', async () => {
-    await TestFactories.createButtonFavoritePresenterWithMovie({ id: 1 });
+    await TestFactories.createButtonFavoritePresenterWithRestaurant({ id: 1 });
 
     document
       .querySelector('[aria-label="remove from favorites"]')
@@ -41,7 +41,7 @@ describe('Unliking A Restaurant', () => {
   });
 
   it('Should not throw error if the unliked restaurant is not in the list', async () => {
-    await TestFactories.createButtonFavoritePresenterWithMovie({ id: 1 });
+    await TestFactories.createButtonFavoritePresenterWithRestaurant({ id: 1 });
 
     await FavoriteRestaurantIdb.deleteRestaurant(1);
 
