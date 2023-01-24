@@ -1,0 +1,11 @@
+article {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  header {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+}

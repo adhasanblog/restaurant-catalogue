@@ -1,0 +1,90 @@
+@import '../variable';
+
+search-bar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  padding: 0;
+  display: none;
+
+  &:focus {
+    outline: none;
+  }
+
+  @media screen and (min-width: 650px) {
+    padding: 24px;
+  }
+
+  .search-bar {
+    width: 100%;
+    max-width: 1320px;
+    height: max-content;
+    padding: 24px;
+    margin: auto;
+    background-color: white;
+    flex-direction: column;
+    gap: 24px;
+    display: flex;
+
+    @media screen and (min-width: 650px) {
+      border-radius: 6px;
+    }
+
+    form {
+      display: flex;
+      padding: 12px;
+      gap: 24px;
+      align-items: center;
+      font-size: 1rem;
+
+      @media screen and (min-width: 865px) {
+        font-size: 1.5rem;
+      }
+
+      input {
+        font-size: inherit;
+        width: 100%;
+        height: 50px;
+        padding: 12px 20px;
+        border-radius: 12px;
+        color: inherit;
+        outline: none;
+        border: none;
+      }
+
+      &::before {
+        font-family: 'Font Awesome 6 Free';
+        font-size: inherit;
+        font-weight: 900;
+        content: '\f002';
+        color: inherit;
+      }
+
+      &::after {
+        font-family: 'Font Awesome 6 Free';
+        font-size: 2rem;
+        font-weight: 900;
+        width: max-content;
+        padding: 12px 24px;
+        font-size: 8px;
+        content: 'ESC';
+        color: white;
+        border-radius: 6px;
+        background-color: map-get($map: $color, $key: primary-black);
+      }
+    }
+
+    .container {
+      overflow: auto;
+      height: max-content;
+      max-height: 100vh;
+    }
+  }
+  &.active {
+    z-index: 100;
+  }
+  &.active {
+    display: block;
+  }
+}

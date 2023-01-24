@@ -1,0 +1,20 @@
+.button-favorite {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+
+  background-color: red;
+  color: white;
+  font-size: 1.5rem;
+  z-index: 9999;
+  cursor: pointer;
+}

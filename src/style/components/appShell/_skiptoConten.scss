@@ -1,0 +1,13 @@
+.skip-content {
+  position: absolute;
+  padding: 10px 20px;
+  background-color: blue;
+  color: white;
+  opacity: 0;
+  text-decoration: none;
+
+  &:focus {
+    opacity: 1;
+    z-index: 999999;
+  }
+}

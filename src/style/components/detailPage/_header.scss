@@ -1,0 +1,91 @@
+@import '../../variable';
+
+.header-restaurant {
+  width: 100%;
+  max-width: 1320px;
+  margin: auto;
+  padding: 0 24px;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border-color: inherit;
+
+  h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    border-bottom: 1px solid;
+    border-color: inherit;
+
+    @media screen and (min-width: 550px) {
+      font-size: 1.5rem;
+    }
+  }
+
+  &__description {
+    border-color: inherit;
+    .top {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      padding-bottom: 6px;
+      font-size: 12px;
+      border-color: inherit;
+
+      @media screen and (min-width: 550px) {
+        grid-template-columns: repeat(3, max-content);
+        padding: 0;
+        font-size: 1rem;
+      }
+
+      p {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        gap: 4px;
+        border-color: inherit;
+
+        i {
+          color: map-get($map: $color, $key: primary-orange);
+        }
+
+        &:not(:last-child)::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          right: -6px;
+          bottom: 0;
+          border-right: 1px solid;
+          border-color: inherit;
+        }
+
+        @media screen and (min-width: 550px) {
+          flex-direction: row;
+        }
+      }
+    }
+
+    .bottom {
+      padding-top: 6px;
+      text-align: center;
+      font-size: 12px;
+
+      @media screen and (min-width: 550px) {
+        text-align: left;
+        padding: 0;
+        font-size: 1rem;
+      }
+    }
+  }
+
+  &__action {
+    grid-area: action;
+
+    svg {
+      font-size: 20px;
+    }
+  }
+}

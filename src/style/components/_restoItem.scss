@@ -1,0 +1,110 @@
+@import '../variable';
+
+.restaurant-item {
+  position: relative;
+  width: 100%;
+  max-height: 450px;
+  min-height: 350px;
+
+  border-radius: 6px;
+  padding: 12px;
+
+  &__image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 6px;
+  }
+
+  &__city {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 11px;
+    background-color: inherit;
+    min-width: 100px;
+    padding: 0 12px 6px;
+    border-radius: 0px 0 10px;
+
+    p {
+      font-weight: 600;
+      color: inherit;
+
+      @media screen and (min-width: 650px) {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3; /* number of lines to show */
+        -webkit-box-orient: vertical;
+      }
+
+      @media screen and (max-width: 430px) {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3; /* number of lines to show */
+        -webkit-box-orient: vertical;
+      }
+    }
+  }
+
+  &__info {
+    position: relative;
+
+    h3 {
+      font-size: 1.3rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 1; /* number of lines to show */
+      -webkit-box-orient: vertical;
+      padding: 6px 0;
+    }
+
+    p {
+      grid-area: description;
+      line-height: 1.75rem;
+      color: inherit;
+      opacity: 0.8;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 4; /* number of lines to show */
+      -webkit-box-orient: vertical;
+    }
+  }
+
+  &__rating {
+    width: max-content;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: rotate(36deg);
+
+    i {
+      font-size: 3rem;
+      color: map-get($map: $color, $key: primary-orange);
+      vertical-align: middle;
+    }
+
+    span {
+      position: absolute;
+      font-weight: 700;
+      text-align: center;
+    }
+  }
+
+  a {
+    position: absolute;
+    inset: 0;
+
+    &:focus {
+      color: inherit;
+      background-color: currentColor;
+      opacity: 0.3;
+    }
+  }
+}

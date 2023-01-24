@@ -1,0 +1,66 @@
+content-restaurant {
+  .content {
+    width: 100%;
+    max-width: 1320px;
+    background-color: inherit;
+    margin: auto;
+    padding: 0 24px;
+    border-color: inherit;
+
+    .tab-menu {
+      border-color: inherit;
+
+      ul {
+        position: relative;
+        height: 50px;
+        display: flex;
+        list-style: none;
+        border: 1px solid;
+        border-color: inherit;
+
+        li {
+          a {
+            position: relative;
+            display: flex;
+            text-decoration: none;
+            color: inherit;
+            background: transparant;
+            height: 100%;
+            padding: 0 24px;
+            align-items: center;
+
+            &.active {
+              border-bottom: 1px solid;
+              color: #5a4fcf;
+              border-color: inherit;
+
+              &::after {
+                content: '';
+                position: absolute;
+                bottom: -2px;
+                left: 0;
+                right: 0;
+                background: #5a4fcf;
+                height: 5px;
+                z-index: 10;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .tab-content {
+      height: auto;
+      min-height: 300px;
+      padding: 24px;
+      border: 1px solid;
+      border-top: none;
+      border-color: inherit;
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}

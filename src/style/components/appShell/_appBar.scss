@@ -1,0 +1,135 @@
+@import '../../variable';
+
+.app-bar {
+  position: sticky;
+  top: 0;
+  z-index: 99;
+  padding: 12px 24px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  background-color: inherit;
+  color: inherit;
+
+  &__navigation {
+    position: absolute;
+    width: 40%;
+    max-width: 250px;
+    min-width: 150px;
+    top: calc(70px);
+    left: 0;
+    background-color: map-get($map: $color, $key: primary-black);
+    transform-origin: top;
+    transform: scaleY(0);
+    transition: all 0.5s ease-in-out;
+    visibility: hidden;
+
+    @media screen and (min-width: 1020px) {
+      width: auto;
+      max-width: inherit;
+      position: static;
+      background-color: transparent;
+      transform: none;
+      visibility: visible;
+    }
+
+    &.open {
+      transform: scaleY(100%);
+      visibility: visible;
+    }
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      height: 100%;
+
+      @media screen and (min-width: 1020px) {
+        flex-direction: row;
+        align-items: center;
+      }
+
+      li {
+        list-style: none;
+
+        a {
+          display: inline-block;
+          width: 100%;
+          position: relative;
+          font-size: 1rem;
+          font-weight: 600;
+          text-decoration: none;
+          color: map-get($map: $color, $key: primary-white);
+          opacity: 0.75;
+          padding: 12px;
+
+          @media screen and (min-width: 1020px) {
+            color: inherit;
+            opacity: 0.7;
+            padding: 12px 20px;
+
+            &:hover,
+            &.active {
+              color: inherit;
+              opacity: 1;
+
+              &::after {
+                content: '';
+                height: 3px;
+                background-color: #5a4fcf;
+
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 5px;
+                margin: 0 20px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &__brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-self: center;
+
+    h1 {
+      color: inherit;
+      font-size: 1.75rem;
+    }
+  }
+
+  &__search {
+    width: 45px;
+    height: 45px;
+    justify-self: right;
+    padding: 12px 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    color: inherit;
+    opacity: 0.75;
+
+    border-radius: 50%;
+    border: 0;
+  }
+
+  &__menu {
+    button {
+      background-color: transparent;
+      border: none;
+      font-size: 2rem;
+      padding: 6px 12px;
+      cursor: pointer;
+      color: inherit;
+    }
+    @media screen and (min-width: 1020px) {
+      display: none;
+    }
+  }
+}

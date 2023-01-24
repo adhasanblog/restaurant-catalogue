@@ -1,0 +1,80 @@
+@use './font';
+@use './components/app';
+@import './variable';
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  &.light {
+    background-color: map-get($map: $color, $key: primary-white);
+    color: map-get($map: $color, $key: primary-black);
+
+    .app-bar {
+      box-shadow: 0 2px 4px 0 rgba($color: #232631, $alpha: 0.2);
+    }
+
+    .restaurant-item {
+      background-color: lighten(
+        $color: map-get($map: $color, $key: primary-black),
+        $amount: 75%
+      );
+      color: map-get($map: $color, $key: primary-dark);
+    }
+
+    content-restaurant,
+    header-restaurant {
+      border-color: rgba(
+        $color: map-get($map: $color, $key: primary-black),
+        $alpha: 0.2
+      );
+    }
+  }
+
+  &.dark {
+    background-color: map-get($map: $color, $key: primary-black);
+    color: map-get($map: $color, $key: primary-white);
+
+    .app-bar {
+      box-shadow: 0 2px 4px 0 rgba($color: #ffffff, $alpha: 0.2);
+    }
+
+    .restaurant-item {
+      background-color: darken(
+        $color: map-get($map: $color, $key: primary-black),
+        $amount: 30%
+      );
+      color: map-get($map: $color, $key: primary-white);
+    }
+
+    content-restaurant,
+    header-restaurant {
+      border-color: rgba(
+        $color: map-get($map: $color, $key: primary-white),
+        $alpha: 0.2
+      );
+    }
+  }
+
+  main {
+    flex: 1;
+    min-height: 100%;
+    background-color: inherit;
+    color: inherit;
+    border-color: inherit;
+    margin-top: 24px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}

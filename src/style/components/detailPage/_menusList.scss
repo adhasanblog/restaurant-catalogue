@@ -1,0 +1,33 @@
+menu-restaurant {
+  h2 {
+    font-size: 1.75rem;
+    padding: 24px 0 6px 0;
+    border-bottom: 1px solid rgba(35, 38, 49, 0.2);
+    margin-bottom: 24px;
+    text-align: center;
+  }
+
+  .menus {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    justify-items: center;
+    text-align: center;
+
+    @media screen and (min-width: 550px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media screen and (min-width: 850px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media screen and (min-width: 1000px) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  img {
+    border-radius: 12px;
+  }
+}

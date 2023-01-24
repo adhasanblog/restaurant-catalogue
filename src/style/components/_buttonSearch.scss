@@ -1,0 +1,35 @@
+@import '../variable';
+
+.search-button {
+  width: max-content;
+  align-self: flex-end;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+
+  padding: 12px;
+  border: 1px solid;
+  border-color: inherit;
+  border-radius: 24px;
+  color: inherit;
+  background-color: inherit;
+  cursor: pointer;
+
+  &::before {
+    content: '\f002';
+    font-family: 'Font Awesome 6 Free';
+    font-size: 1rem;
+    font-weight: 900;
+    color: inherit;
+  }
+
+  &::after {
+    padding: 6px;
+    font-size: 8px;
+    content: 'Ctrl /';
+    color: white;
+    border-radius: 6px;
+    background-color: map-get($map: $color, $key: primary-black);
+  }
+}
